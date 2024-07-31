@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script>
+        function calculate(operation){
+            let num1=parseFloat(document.getElementById('num1').value);
+            let num2=parseFloat(document.getElementById('num2').value);
+            let result;
+        
+        switch(operation){
+             case 'add':
+                result=num1+num2;
+                break;
+            case 'sub':
+                result=num1-num2;
+                break;
+            case 'mul':
+                result=num1*num2;
+                break;    
+            case 'divide':
+                result=num1*num2;
+                break;  
+            default:     
+           result='invalid number';
+            break;
+        }
+        document.getElementById('result').innerText = 'Result: ' + result;
+    }
+    </script>
 </head>
 <body>
-    <h2>Simple Calculator</h2>
-    <label for="num1">Enter first number:</label>
-    <input type="number" id="num1" name="num1" required><br><br>
-
-    <label for="num2">Enter second number:</label>
-    <input type="number" id="num2" name="num2" required><br><br>
-
-    <label for="operation">Select operation:</label>
-    <select id="operation" name="operation">
-        <option value="add">Addition (+)</option>
-        <option value="subtract">Subtraction (-)</option>
-        <option value="multiply">Multiplication (*)</option>
-        <option value="divide">Division (/)</option>
-    </select><br><br>
-
-    <button onclick="calculate()">Calculate</button><br><br>
-
-    <label id="result"></label>
-
-    <script>
-        function calculate() {
-            var num1 = parseFloat(document.getElementById('num1').value);
-            var num2 = parseFloat(document.getElementById('num2').value);
-            var operation = document.getElementById('operation').value;
-            var result;
-
-            switch(operation) {
-                case 'add':
-                    result = num1 + num2;
-                    break;
-                case 'subtract':
-                    result = num1 - num2;
-                    break;
-                case 'multiply':
-                    result = num1 * num2;
-                    break;
-                case 'divide':
-                    if (num2 !== 0) {
-                        result = num1 / num2;
-                    } else {
-                        result = "Cannot divide by zero!";
-                    }
-                    break;
-                default:
-                    result = "Invalid operation";
-            }
-
-            document.getElementById('result').innerText = "Result: " + result;
-        }
-    </script>
+    <h1>simple Calculator</h1>
+    <form>
+        <label for="num1">num1</label>
+        <input type="number" name="num1" id="num1"><br><br>
+        <label for="num2">num2</label>
+        <input type="number" name="num2" id="num2"><br><br>
+        <button type="button" onclick="calculate('add')">Add</button>
+        <button type="button" onclick="calculate('sub')">Subtract</button>
+        <button type="button" onclick="calculate('mul')">Multiply</button>
+        <button type="button" onclick="calculate('divide')">Divide</button>
+    </form>  
+    <h2 id="result">Result</h2>
 </body>
 </html>
